@@ -59,7 +59,7 @@ public class Empleado {
 	}
 	
 	public void darBonus() {
-		if(this.tipoEmp<'V') {
+		if(this.tipoEmp!='V' && this.tipoEmp != 'v') {
 			this.sueloAno[1] += (this.sueloAno[1] * 0.1);
 		}
 	}

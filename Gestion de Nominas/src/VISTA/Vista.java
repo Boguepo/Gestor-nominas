@@ -16,13 +16,19 @@ public class Vista {
 	}
 
 	public void menuPrincipal(Empleado[] emp, boolean fin) {
-		String op = JOptionPane.showInputDialog("Que deseas hacer?\n" + "1.- Añadir empleado\n" + "2.- Salir y imprimir\n");
+		String op = JOptionPane.showInputDialog("Que deseas hacer?\n" + "1.- Añadir empleado\n" +"2.- Dar bonus\n"+ "3.- Salir y imprimir\n");
 		try {
 		switch (op) {
 		case "1":
 			crearEmp(emp);
 			break;
 		case "2":
+			if(emp[0] == null) {throw new MiExcepcion(6);}
+			else {
+				darBonus(emp);
+			}
+			break;
+		case "3":
 			
 			if(emp[0] == null) {throw new MiExcepcion(6);}
 			else {
@@ -36,6 +42,15 @@ public class Vista {
 			JOptionPane.showMessageDialog(null, "Error: "+e.getMessage());
 		}
 
+	}
+
+	private void darBonus(Empleado[] emp) {
+		for (int i = 0; i < emp.length; i++) {
+			emp[i].darBonus();
+		}
+		
+		JOptionPane.showMessageDialog(null, "Bonus añadido");
+		
 	}
 
 	private void verNominas(Empleado[] emp) {
